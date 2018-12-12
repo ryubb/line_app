@@ -9,4 +9,8 @@ class HomeController < ApplicationController
 
   def contact
   end
+
+  def timeline
+    render layout: "application"
+  end
 end

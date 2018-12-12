@@ -2,12 +2,13 @@ class UsersController < ApplicationController
   layout "top_application"
 
   def index
-    @user = User.all
+    @users = User.all
+    render layout: "application"
   end
 
   def show
-    @users = User.all
     @user = User.find(params[:id])
+    render layout: "application"
   end
 
   def new

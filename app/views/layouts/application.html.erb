@@ -10,8 +10,24 @@
   </head>
 
   <body>
-    <div>
-      <%= yield %>
+    <div class="basicBlock">
+      <div class="head flex alignItems-center justifyContent-center">
+        <% if !@user.nil? %>
+          <%= @user.name %>
+        <% end %>
+      </div>
+      <div class="contents flex">
+        <div class="contents_sidebar">
+          <%= render "contents/sidebar" %>
+        </div>
+
+        <div class="contents_main">
+          <%= yield %>
+        </div>
+      </div>
+      <%= render "shared/footer" %>
     </div>
   </body>
 </html>
+
+

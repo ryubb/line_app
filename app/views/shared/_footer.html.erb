@@ -1,6 +1,10 @@
 <footer class="flex justifyContent-end">
   <ul class="flex">
-    <li class="footer_list"><%= link_to "トップへ", root_path %></li>
+    <% if logged_in? %>
+      <li class="footer_list"><%= link_to "マイページ", current_user %></li>
+    <% else %>
+      <li class="footer_list"><%= link_to "トップへ", root_path %></li>
+    <% end %>
     <li class="footer_list"><%= link_to "このサイトについて", about_path %></li>
     <li class="footer_list"><%= link_to "お問合せ", contact_path %></li>
     <% if logged_in? %>
