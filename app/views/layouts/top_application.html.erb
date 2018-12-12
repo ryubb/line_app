@@ -10,8 +10,10 @@
   </head>
 
   <body>
-    <div>
+    <div class="basicBlock">
+      <div class="head"></div>
       <%= yield %>
+      <%= render "shared/footer" %>
     </div>
   </body>
 </html>
