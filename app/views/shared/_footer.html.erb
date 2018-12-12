@@ -3,5 +3,8 @@
     <li class="footer_list"><%= link_to "トップへ", root_path %></li>
     <li class="footer_list"><%= link_to "このサイトについて", about_path %></li>
     <li class="footer_list"><%= link_to "お問合せ", contact_path %></li>
+    <% if logged_in? %>
+      <li class="footer_list"><%= link_to "ログアウト", logout_path, method: :delete, data: { confirm: "ログアウトしますか？" } %></li>
+    <% end %>
   </ul>
 </footer>

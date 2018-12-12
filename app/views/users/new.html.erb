@@ -1,0 +1,18 @@
+<div class="home flex flex-direction justifyContent-center alignItems-center">
+  <%= form_for(@user) do |f| %>
+		<%= render "shared/error" %>
+    <p class="form_item"><%= f.label :name %>
+    <%= f.text_field :name %></p>
+
+    <p class="form_item"><%= f.label :email %>
+        <%= f.email_field :email %></p>
+
+    <p class="form_item"><%= f.label :password %>
+      <%= f.password_field :password %></p>
+
+    <p class="form_item"><%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %></p>
+
+    <%= f.submit "登録" %>
+  <% end %>
+</div>
