@@ -11,7 +11,11 @@
 
   <body>
     <div class="basicBlock">
-      <div class="head"></div>
+      <div class="head flex alignItems-center justifyContent-center">
+        <% if !@user.nil? %>
+          <%= @user.name %>
+        <% end %>
+      </div>
       <%= yield %>
       <%= render "shared/footer" %>
     </div>
