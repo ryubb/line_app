@@ -21,3 +21,17 @@
     justify-content: center;
   }
 }
+
+.txt {
+  &-sml {
+    font-size: 10px;
+  }
+
+  &-med {
+    font-size: 15px;
+  }
+
+  &-lrg {
+    font-size: 24px;
+  }
+}
