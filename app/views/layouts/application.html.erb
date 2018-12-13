@@ -12,8 +12,13 @@
   <body>
     <div class="basicBlock">
       <div class="head flex alignItems-center justifyContent-center">
-        <% if !@user.nil? %>
-          <%= @user.name %>
+        <% if logged_in? %>
+          <%= current_user.name %>
+        <% end %>
+      </div>
+      <div>
+        <% flash.each do |type, ms| %>
+          <p><%= ms %></p>
         <% end %>
       </div>
       <div class="contents flex">

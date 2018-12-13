@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   layout "top_application"
 
+  before_action :logged_in_user, only: [:index, :show]
+  before_action :correct_user, only: [:show, :edit, :udpate, :destroy]
+
   def index
     @users = User.all
     render layout: "application"
@@ -38,4 +41,13 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
+
+    def correct_user
+      @user = User.find_by(id: params[:id])
+      unless current_user == @user
+        flash[:danger] = "アクセス権限がありません。"
+        redirect_to current_user
+      end
+    end
+
 end
