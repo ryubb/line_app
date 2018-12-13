@@ -16,9 +16,9 @@
           <%= current_user.name %>
         <% end %>
       </div>
-      <div>
+      <div class="flash flex alignItemsw-center justifyContent-center">
         <% flash.each do |type, ms| %>
-          <p><%= ms %></p>
+          <p class="flash_ms"><%= ms %></p>
         <% end %>
       </div>
       <div class="contents flex">
