@@ -3,7 +3,7 @@
     <% @timelines.each do |tl| %>
       <p class="txt-lrg"><%= tl.content %>  
       <% if current_user.id == tl.user_id %>
-        <%= link_to "削除する", timeline_path(tl), method: :delete, data: { confirm: "削除しますか？" } %></p>
+        <%= link_to "削除する", timeline_path(tl), class: "txt-med", method: :delete, data: { confirm: "削除しますか？" } %></p>
       <% end %>
 
       <p><%= tl.user.name %> <span class="txt-sml"><%= tl.created_at %></span></p>
