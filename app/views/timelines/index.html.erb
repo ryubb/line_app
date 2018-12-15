@@ -1,4 +1,5 @@
-<div class="home flex flex-direction justifyContent-center alignItems-center">
+<div class="flex flex-direction justifyContent-center alignItems-center">
+  <%= will_paginate @timelines %>
   <div>
     <% @timelines.each do |tl| %>
       <p class="txt-lrg"><%= tl.content %>  
@@ -9,6 +10,7 @@
       <p><%= tl.user.name %> <span class="txt-sml"><%= tl.created_at %></span></p>
     <% end %>
   </div>
+  <%= will_paginate @timelines %>
   <div>
     <%= form_for(:tl, url: timelines_path) do |f| %>
       <%= f.text_field :content %>

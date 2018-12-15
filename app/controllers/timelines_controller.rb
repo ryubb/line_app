@@ -2,7 +2,7 @@ class TimelinesController < ApplicationController
   before_action :logged_in_user, only: [:index, :create, :destroy]
 
   def index
-    @timelines = Timeline.all
+    @timelines = Timeline.paginate(page: params[:page], per_page: 10)
   end
 
   def create

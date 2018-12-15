@@ -9,4 +9,9 @@ class HomeController < ApplicationController
 
   def contact
   end
+
+  def friends
+    @user = User.find(60)
+    render layout: "application"
+  end
 end
