@@ -15,15 +15,11 @@ class User < ApplicationRecord
     from_user + to_user
   end
 
-  def following?(other_user)
-    from_user_friendships.find_by(from_user_id: other_user.id)
+  def become_friend(other_user)
+    from_user << other_user
   end
 
-  def follow(other_user)
-    from_user_friendships.create(from_user_id: other_user.id)
-  end
-
-  def unfollow(other_user)
-    from_user_friendships.find_by(from_user_id: other_user.id).destroy
-  end
+  def friends?(other_user)
+		from_user.include?(other_user)
+	end
 end

@@ -11,7 +11,7 @@ class HomeController < ApplicationController
   end
 
   def friends
-    @user = User.find(60)
+    @friends = current_user.friends
     render layout: "application"
   end
 end

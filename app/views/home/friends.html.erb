@@ -1,5 +1,8 @@
-<%= current_user.from_user.count %>
-<%= current_user.to_user.count %>
+<p class="friends_content">友達の数：<%= current_user.friends.count %></p>
 
-<%= @user.from_user.count %>
-<%= @user.to_user.count %>
+<div class="friends_content">
+  <p class=""><strong>全ての友達</strong></p>
+  <% @friends.each do |friend| %>
+    <div><%= friend.name %></div>
+  <% end %>
+</div>

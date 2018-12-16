@@ -1,5 +1,11 @@
 <ul>
   <% @users.each do |user| %>
-  <li><%= user.name %></li>
+  <li>
+    <%= user.name %> 
+    <%= form_for(current_user.from_user_friendships.build) do |f| %>
+      <%= hidden_field_tag :to_user_id, user.id %>
+      <%= f.submit "友達になる" %>
+    <% end %>
+  </li>
   <% end %>
 </ul>
