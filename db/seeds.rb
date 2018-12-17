@@ -8,9 +8,6 @@ User.create!(name: "test2",
             password: "foobar",
             password_confirmation: "foobar")
 
-rd = Random.rand(0..5)
-user = User.find(rd)
-
 100.times do |n|
   name  = Faker::Name.name
   email = "example-#{n}@railstutorial.org"
@@ -21,6 +18,13 @@ user = User.find(rd)
     password: password,
     password_confirmation: password
   )
+end
+
+
+
+50.times do
+  rd = Random.rand(1..5)
+  user = User.find(rd)
   user.timelines.create!(content: Faker::Lorem.sentence)
 end
 
