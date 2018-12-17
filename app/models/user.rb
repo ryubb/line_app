@@ -19,7 +19,11 @@ class User < ApplicationRecord
     from_user << other_user
   end
 
-  def friend?(other_user)
+  def from_friend?(other_user)
 		from_user.include?(other_user)
-	end
+  end
+  
+  def to_friend?(user)
+    to_user.include?(user)
+  end
 end
