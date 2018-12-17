@@ -3,6 +3,12 @@ class User < ApplicationRecord
   has_many :from_user, through: :from_user_friendships, source: :to_user
   has_many :to_user_friendships, class_name: "Friendship", foreign_key: "to_user_id", dependent: :destroy
   has_many :to_user, through: :to_user_friendships, source: :from_user
+
+  has_many :from_user_messages, class_name: "Message", foreign_key: "from_user_id", dependent: :destroy
+  has_many :send_user, through: :from_user_messages, source: :to_user
+  has_many :to_user_messages, class_name: "Message", foreign_key: "to_user_id", dependent: :destroy
+  has_many :recieved_user, through: :to_user_messages, source: :from_user
+
   has_many :timelines
 
   validates :name, presence: true, length: { maximum: 50 }
@@ -25,5 +31,9 @@ class User < ApplicationRecord
   
   def to_friend?(user)
     to_user.include?(user)
+  end
+
+  def send_message(other_user, room_id, content)
+    send_message.create(to_id: other_user, room_id: room_id, content: content)
   end
 end

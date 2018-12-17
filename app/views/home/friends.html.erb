@@ -3,6 +3,7 @@
 <div class="friends_content">
   <p class=""><strong>全ての友達</strong></p>
   <% @friends.each do |friend| %>
-    <div><%= friend.name %></div>
+    <div><%= friend.name %>  <%= link_to "トークへ", friend %></div>
+    
   <% end %>
 </div>

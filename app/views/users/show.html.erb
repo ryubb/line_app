@@ -1,0 +1,7 @@
+<% if !current_user?(@user) && logged_in? %>
+  <section class="message_box">
+    <div id="messages">
+      <%= render @messages %>
+    </div>
+  </section>
+<% end %>
