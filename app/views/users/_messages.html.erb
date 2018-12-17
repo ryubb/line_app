@@ -1,7 +1,14 @@
-<form class="message_form">
-  <input type="hidden" name="from_id" value="<%= from_user.id %>">
-  <input type="hidden" name="to_id" value="<%= to_user.id %>">
-  <input type="hidden" name="room_id" value="<%= room_id %>">
-  <label>Send Message to <%= to_user.name %></label><br>
-  <input type="text" name="content" data-behavior="chat_speaker">
-</form>
+<div class="message" data-session="<%= session[:user_id] %>">
+  <% user = User.find_by(id: @messages.from_user_id) %>
+  <p class="<%= @messages.id %>" id="message_sender"><%= user.name %></p>
+  <p class="<%= @messages.id %>" id="message_content"><%= @messages.content %></p>
+  <script type="text/javascript">
+    var from_id = <%= @messages.from_user_id %>;
+    var current_user_id = $('.message').data('session');
+    if(from_user_id == current_user_id){
+      $('p.' + <%= @messages.id %>).css('text-align', 'right');
+    }else{
+      $('p.' + <%= @messages.id %>).css('text-align', 'left');
+    }
+  </script>
+</div>
