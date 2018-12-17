@@ -32,4 +32,4 @@ user  = users.first
 from_user = users[2..70]
 to_user = users[3..83]
 from_user.each { |from_user| user.become_friend(from_user) }
-to_user.each { |to_user| to_user.follow(user) }
+to_user.each { |to_user| to_user.become_friend(user) }
