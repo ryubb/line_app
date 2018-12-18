@@ -33,7 +33,15 @@ class User < ApplicationRecord
     to_user.include?(user)
   end
 
+  def send_message?(other_user)
+		send_user.include?(other_user)
+  end
+  
+  def recieved_friend?(user)
+    recieved_user.include?(user)
+  end
+
   def send_message(other_user, room_id, content)
-    send_message.create(to_id: other_user, room_id: room_id, content: content)
+    from_user_messages.create!(to_user_id: other_user, room_id: room_id, content: content)
   end
 end

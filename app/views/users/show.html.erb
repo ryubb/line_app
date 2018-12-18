@@ -3,19 +3,35 @@
   <% if !current_user?(@user) && logged_in? %>
     <section class="message_box">
       <div id="messages">
-        <%= render "messages" %>
+        <ul>
+          <% @messages.each do |ms| %>
+            <% if !ms.from_user.nil? %>
+              <div class="messages_content">
+                <li><%= ms.content %></li>
+                <li><%= ms.from_user.name %></li>
+                <li><%= ms.created_at %></li>
+              </div>
+            <% elsif !ms.to_user.nil? %>
+              <div class="messages_content">
+                <li><%= ms.content %></li>
+                <li><%= ms.to_user.name %></li>
+                <li><%= ms.created_at %></li>
+              </div>
+            <% end %>
+          <% end %>
+        </ul>
       </div>
     </section>
-    <script type="text/javascript">
-      var height = 0;
-      $("div.message").each( function() {
-        height += ($(this).height());
-      });
-      $('section.message_box').scrollTop(height);
-    </script>
     <div class="message_form">
-     <%= render 'messages_form',
-       {from_user: current_user, to_user: @user, room_id: @room_id} %>
+      <%= form_for(message=Message.new, url: messages_path) do |f| %>
+        <%= f.label :content %>
+        <%= f.text_field :content %>
+
+        <%= hidden_field_tag :to_user_id, @user.id %>
+        <%= hidden_field_tag :room_id, @room_id %>
+        
+        <%= f.submit "送信" %>
+      <% end %>
     </div>
   <% end %>
 </aside>

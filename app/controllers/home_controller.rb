@@ -2,6 +2,7 @@ class HomeController < ApplicationController
   layout "top_application"
 
   def index
+    redirect_to current_user if logged_in?
   end
 
   def about

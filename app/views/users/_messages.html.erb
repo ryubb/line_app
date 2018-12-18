@@ -2,13 +2,4 @@
   <% user = User.find_by(id: @messages.from_user_id) %>
   <p class="<%= @messages.id %>" id="message_sender"><%= user.name %></p>
   <p class="<%= @messages.id %>" id="message_content"><%= @messages.content %></p>
-  <script type="text/javascript">
-    var from_id = <%= @messages.from_user_id %>;
-    var current_user_id = $('.message').data('session');
-    if(from_user_id == current_user_id){
-      $('p.' + <%= @messages.id %>).css('text-align', 'right');
-    }else{
-      $('p.' + <%= @messages.id %>).css('text-align', 'left');
-    }
-  </script>
 </div>
