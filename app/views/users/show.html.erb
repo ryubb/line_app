@@ -5,16 +5,16 @@
       <div id="messages">
         <ul>
           <% @messages.each do |ms| %>
-            <% if !ms.from_user.nil? %>
-              <div class="messages_content">
-                <li><%= ms.content %></li>
+            <% if ms.from_user != @user %>
+              <div class="messages_content messages_content-left">
+                <li class="txt-lrg"><%= ms.content %></li>
                 <li><%= ms.from_user.name %></li>
                 <li><%= ms.created_at %></li>
               </div>
-            <% elsif !ms.to_user.nil? %>
-              <div class="messages_content">
-                <li><%= ms.content %></li>
-                <li><%= ms.to_user.name %></li>
+            <% else %>
+              <div class="messages_content messages_content-right">
+                <li class="txt-lrg"><%= ms.content %></li>
+                <li><%= ms.from_user.name %></li>
                 <li><%= ms.created_at %></li>
               </div>
             <% end %>

@@ -4,5 +4,12 @@
 .messages {
   &_content {
     margin-bottom: 15px;
+
+    &-left {
+    }
+
+    &-right {
+      padding-left: 400px;
+    }
   }
 }
